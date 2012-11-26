@@ -11,6 +11,8 @@ gem 'pg'
 gem "bootstrap-sass", "~> 2.1.1.0"
 gem 'will_paginate'
 gem "devise", "~> 2.1.2"
+gem "omniauth-twitter", "~> 0.0.14"
+gem "figaro"
 
 group :development, :test do
 	gem 'annotate', '2.5.0'

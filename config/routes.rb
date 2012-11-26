@@ -1,6 +1,7 @@
 Tweetvstweet::Application.routes.draw do
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "new"}
+  devise_for :users,  path_names: {sign_in: "login", sign_out: "logout", sign_up: "new"},
+                      controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   root :to => "pages#home"
 
