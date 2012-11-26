@@ -1,0 +1,24 @@
+<h1>Sign up</h1>
+<div class="row">
+  <div class="span6 offset3">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		  <%= devise_error_messages! %>
+
+			<%= f.label :email %>
+		  	<%= f.email_field :email %>
+
+			<%= f.label :username %>
+		  	<%= f.text_field :username %>
+
+			<%= f.label :password %>
+		  	<%= f.password_field :password %>
+
+			<%= f.label :password_confirmation, "Confirmation" %>
+		 	<%= f.password_field :password_confirmation %>
+
+		  	<%= f.submit "Create Account", class: "btn btn-medium btn-primary" %>
+		<% end %>
+
+		<%= render "devise/shared/links" %>
+	</div>
+</div>
