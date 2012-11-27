@@ -9,12 +9,10 @@ gem 'pg'
 
 # Power Pack
 gem "bootstrap-sass", "~> 2.1.1.0"
+gem 'will_paginate'
 gem "devise", "~> 2.1.2"
 gem "omniauth-twitter", "~> 0.0.14"
 gem "figaro"
-gem "rails_admin", "~> 0.2.0"
-
-
 
 group :development, :test do
 	gem 'annotate', '2.5.0'
