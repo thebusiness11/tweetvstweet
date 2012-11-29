@@ -13,6 +13,7 @@ gem "devise", "~> 2.1.2"
 gem "omniauth-twitter", "~> 0.0.14"
 gem "figaro"
 gem "rails_admin", "~> 0.2.0"
+gem "cancan"
 
 
 
