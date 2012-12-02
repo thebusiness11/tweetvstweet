@@ -6,7 +6,8 @@ Tweetvstweet::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/manage', :as => 'rails_admin'
 
-  root :to => "pages#home"
+  root :to => "hashtags#home"
+  resources :hashtags
 
 
   # The priority is based upon order of creation:

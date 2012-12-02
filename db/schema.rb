@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129040332) do
+ActiveRecord::Schema.define(:version => 20121130081624) do
+
+  create_table "hashtags", :force => true do |t|
+    t.integer  "tweet_id",          :limit => 8
+    t.string   "from_user"
+    t.text     "text"
+    t.text     "profile_image_url"
+    t.date     "created_at",                     :null => false
+    t.string   "hashtag"
+    t.datetime "updated_at",                     :null => false
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -44,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20121129040332) do
     t.string   "uid"
     t.string   "image"
     t.boolean  "admin",                  :default => false
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

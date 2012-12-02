@@ -14,10 +14,18 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
   	where(auth.slice(:provider, :uid)).first_or_create do |user|
-  		user.provider = auth.provider
-  		user.uid = auth.uid
-  		user.image = auth.info.image
-  		user.username = auth.info.nickname
+  		user.provider 		= auth.provider
+  		user.uid 			= auth.uid
+  		user.image 			= auth.info.image
+  		user.username 		= auth.info.nickname
+  		user.oauth_token	= auth.credentials.token
+  		user.oauth_secret	= auth.credentials.secret
+  	end
+	end
+
+	def twitter
+  		if provider == "twitter"
+    	@twitter ||= Twitter::Client.new(oauth_token: user.oauth_token, oauth_token_secret: user.oauth_secret)
   	end
 	end
 

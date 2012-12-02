@@ -1,3 +1,8 @@
+$navbarBackground: #555;
+$navbarBackgroundHighlight: #888;
+$navbarText: #eee;
+$navbarLinkColor: #eee;
+
 @import "bootstrap";
 
 /* mixins, variables, etc. */
@@ -11,6 +16,34 @@ $maincolor: white;
   box-sizing: border-box;
 }
 
+.input-prepend .add-on{
+  height:50px;
+  min-width:30px;
+  font-size:45px;
+  line-height:44px;
+  min-width:30px;
+  }
+
+.swag_text_field{
+  height:60px !important;
+  font-size: 40px !important;
+  line-height:45px !important;
+} 
+
+.swag_button{
+  height:60px !important;
+  font-size: 40px !important;
+  line-height:45px !important;
+} 
+
+.swag { 
+  background-color:#363636;
+  background-image:-webkit-linear-gradient(top, #444444, #222222);
+  background-repeat:repeat no-repeat;
+  border-color:#222222 #222222 black;
+  color:white;
+  text-shadow:rgba(0, 0, 0, 0.247059) 0 -1px 0;
+}
 /* universal */
 
 html {

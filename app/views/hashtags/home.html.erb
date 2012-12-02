@@ -1,0 +1,25 @@
+
+  <div class="row">
+      <div class="span7 offset1">
+			  
+				<%= form_tag hashtags_path do %>
+				<div class="input-prepend input-append">
+				<span class="add-on swag">#</span>
+
+				<%= text_field_tag :hashtag, nil, class: "span4 inverse swag_text_field", id:"appendedPrependedInput" %>
+
+				<%= submit_tag "Swag!", class: "btn btn-inverse swag_button" %>
+				<% end %>
+
+		</div>
+      </div>
+      <div class="span4">
+      	<div id="hashtags">
+			<% @random_hashtags.each do |hashtag| %>
+			<blockquote><%= hashtag.text %></blockquote>
+			<div class="from">&mdash; @<%= hashtag.from_user %></div>
+ 		<% end %>
+        </div>
+	</div>
+</div>
+

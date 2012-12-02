@@ -14,8 +14,8 @@ gem "omniauth-twitter", "~> 0.0.14"
 gem "figaro"
 gem "rails_admin", "~> 0.2.0"
 gem "cancan"
-
-
+gem "twitter", "~> 4.3.0"
+# gem "oj", "~> 1.4.5"
 
 group :development, :test do
 	gem 'annotate', '2.5.0'
