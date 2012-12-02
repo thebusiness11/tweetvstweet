@@ -1,63 +1,15 @@
 
   <div class="row">
       <div class="span8 offset2">
-			  
-				<%= form_tag hashtags_path do %>
-				<div class="input-prepend input-append">
-				<span class="add-on swag">#</span>
-
-				<%= text_field_tag :hashtag, nil, class: "span4 inverse swag_text_field", id:"appendedPrependedInput" %>
-
-				<%= submit_tag "Swag!", class: "btn btn-inverse swag_button" %>
-				<% end %>
-
+		<%= render 'shared/twitter_search' %>
 		</div>
       </div>
-     <!--  <div class="span2">
-      Most Tweeted Stuff Here
-	</div> -->
 </div>
-<div class="row">
-<div class="span9 offset1">
-	<div id="hashtags" class="twitter-hashtag-voting-block-v1">
-				<% @random_hashtags.each do |hashtag| %>
-		<div class="span4 twitter-spans-v1">
-		<div id="tweet-block-v1" class="hashtag-tweet-database-container">
-		<div class="tweet-block-border-v1">
-		<div class="tweet-block-spacing-v1">
-			<div class="twitter-block-author-v1">
-			<a class="twitter-block-user-v1" target="_blank" href="https://twitter.com/<%= hashtag.from_user %>">
-			<span class="twitter-author-image-v1"><img alt="" class="twitter-author-image-photo-v1" src="<%= hashtag.profile_image_url %>"></span>
-			<span class="twitter-author-name-v1"><%= hashtag.from_user_name %></span>
-			<span class="twitter-author-nickname-v1">@<%= hashtag.from_user %></span>
-			</a>
-			<iframe class="twitter-follow-button-v1" scrolling="no" frameborder="0" src="//platform.twitter.com/widgets/follow_button.html#align=right&button=grey&screen_name=<%= hashtag.from_user %>&show_count=false&show_screen_name=false&lang=en" allowtransparency="true">
-			</iframe>
-			</div>
-		<div class="twitter-text-container-v1">
-		<p class="twitter-text-field-v1">
-		<%= hashtag.text %>
-		</p>
-		</div>
-		<div class="twitter-footer-v1">
-			<a class="twitter-view-details-v1" target="_blank"  href="https://twitter.com/<%= hashtag.from_user %>/statuses/<%= hashtag.tweet_id %>">
-			<span class="tweet-date-v1"><%= hashtag.created_at.strftime("%d %b %Y") %></span>
-			</a>
-			<span class="twitter-vote-button-v1"><a href="#" class="btn btn-mini btn-success">#WINNING</a>
-</span>
-			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-			<ul class="twitter-intent-ul-v1">
-				<li class="twitter-intent-li-v1"><a href="https://twitter.com/intent/tweet?in_reply_to=<%= hashtag.tweet_id %>" class="twitter-intent-tweet" title="Reply"></a></li>
-				<li class="twitter-intent-li-v1"><a href="https://twitter.com/intent/retweet?tweet_id=<%= hashtag.tweet_id %>"  class="twitter-intent-retweet" title="Retweet"></a></li>
-				<li class="twitter-intent-li-v1"><a href="https://twitter.com/intent/favorite?tweet_id=<%= hashtag.tweet_id %>"  class="twitter-intent-favorite" title="Favorite"></a></li>
-			</ul>
-		</div>
-		</div>
-		</div>
-		</div>
-	</div>
 
- 		<% end %>
-        </div>
+	<div class="row">
+<div class="span9 offset1 ">
+	<div class="votes-in">
+
+	        </div>
         </div>
 </div>

@@ -3,7 +3,7 @@
     <div class="container">
       <%= link_to "tweetvstweet", root_path, id: "logo" %>
       <nav>
-        <ul class="nav pull-right">
+        <ul class="nav">
        
           <% if can? :access, :rails_admin %>
           <li><%= link_to 'Admin', rails_admin_path %></li>

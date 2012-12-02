@@ -1,0 +1,8 @@
+	<%= form_tag hashtags_path, remote: true do %>
+				<div class="input-prepend input-append">
+				<span class="add-on swag">#</span>
+
+				<%= text_field_tag :hashtag, nil, class: "span4 inverse swag_text_field", id:"appendedPrependedInput" %>
+
+				<%= submit_tag "Swag!", class: "btn btn-inverse swag_button" %>
+				<% end %>

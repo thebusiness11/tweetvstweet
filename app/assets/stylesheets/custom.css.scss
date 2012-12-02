@@ -18,7 +18,12 @@ $maincolor: white;
 
 
 /*display tweets */
-.twitter-hashtag-voting-block-v1{width:650px}
+.votes-in{
+  display: visible;
+  height: 400px;
+}
+.twitter-hashtag-voting-block-v1{width:650px;
+min-height:500px;}
 .hashtag-tweet-database-container {
     clear: both !important;
     color: #333333 !important;
