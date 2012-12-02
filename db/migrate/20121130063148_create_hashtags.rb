@@ -5,6 +5,7 @@ class CreateHashtags < ActiveRecord::Migration
       t.string :from_user
       t.text :text
       t.text :profile_image_url
+      t.string :from_user_name
       t.date :created_at
       t.string :hashtag
       t.timestamps

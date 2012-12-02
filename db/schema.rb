@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20121130081624) do
     t.string   "from_user"
     t.text     "text"
     t.text     "profile_image_url"
+    t.string   "from_user_name"
     t.date     "created_at",                     :null => false
     t.string   "hashtag"
     t.datetime "updated_at",                     :null => false
