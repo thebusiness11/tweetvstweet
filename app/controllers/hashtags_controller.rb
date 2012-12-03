@@ -20,8 +20,9 @@ class HashtagsController < ApplicationController
 	def create 
 		# @fuck = params[:hashtag]
 		# .where("hashtag LIKE ?", "%#{params[:hashtag]}%")
-
-		@random_hashtags = Hashtag.where{ |hashtag| hashtag.hashtag =~ params[:hashtag]}.limit(4)
+  		dash = "#"
+  		hashtag_scrubbed = [dash, params[:hashtag]].join
+		@random_hashtags = Hashtag.where{ |hashtag| hashtag.hashtag =~ hashtag_scrubbed}.limit(4)
 		Hashtag.pull_hashtag(params[:hashtag])
 		respond_to do |format|
 		format.html { redirect_to vote_path }
