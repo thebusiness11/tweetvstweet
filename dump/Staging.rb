@@ -1,3 +1,12 @@
+  Hashtag Load (0.7ms)  SELECT "hashtags".* FROM "hashtags" WHERE "hashtags"."hashtag" ILIKE '#tweetvstweet' LIMIT 12
+  Hashtag Load (0.4ms)  SELECT "hashtags".* FROM "hashtags" WHERE "hashtags"."hashtag" ILIKE "hashtags"."hashtag" LIMIT 12
+  Hashtag Load (0.5ms)  SELECT "hashtags".* FROM "hashtags" WHERE "hashtags"."hashtag" ILIKE 'hashtag' LIMIT 12
+
+
+
+
+
+
 class HashtagsController < ApplicationController
  	
 	def home 
