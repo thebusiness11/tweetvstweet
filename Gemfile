@@ -17,6 +17,8 @@ gem "cancan"
 gem "twitter", "~> 4.3.0"
 gem "oj", "~> 1.4.5"
 gem "twitter-text"
+gem "squeel", "~> 1.0.13"
+
 
 group :development, :test do
 	gem 'annotate', '2.5.0'
