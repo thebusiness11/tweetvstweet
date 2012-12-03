@@ -17,8 +17,9 @@ class HashtagsController < ApplicationController
 
 	end
 
-	def create
-		@random_hashtags = Hashtag.order("RANDOM()").limit(4)
+	def create 
+		# @fuck = params[:hashtag]
+		@random_hashtags = Hashtag.where{ |hashtag| hashtag.hashtag =~ params[:hashtag]}.limit(12)
 		Hashtag.pull_hashtag(params[:hashtag])
 		respond_to do |format|
 		format.html { redirect_to vote_path }
