@@ -15,7 +15,8 @@
 			</div>
 		<div class="twitter-text-container-v1">
 		<p class="twitter-text-field-v1">
-		<%= hashtag.text %>
+			<%= sanitize(auto_link(hashtag.text).html_safe, :suppress_no_follow => true) %>
+
 		</p>
 		</div>
 		<div class="twitter-footer-v1">
