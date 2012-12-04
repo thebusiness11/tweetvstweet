@@ -6,7 +6,7 @@ class Hashtag < ActiveRecord::Base
  def self.pull_hashtag(hashtag)
   dash = "#"
   hashtag_scrubbed = [dash, hashtag].join
-  Twitter.search("%#{hashtag}", :lang => "en", :count => 100, :result_type => "mixed").results.map do |tweet|
+  Twitter.search("%#{hashtag_scrubbed}", :lang => "en", :count => 100, :result_type => "mixed").results.map do |tweet|
   	unless exists?(tweet_id: tweet.id)
   		create!(
   			tweet_id: tweet.id,
