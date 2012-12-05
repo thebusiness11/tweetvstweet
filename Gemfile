@@ -18,6 +18,7 @@ gem "twitter", "~> 4.3.0"
 gem "oj", "~> 1.4.5"
 gem "twitter-text"
 gem "squeel", "~> 1.0.13"
+	gem 'rack-mini-profiler'
 
 
 group :development, :test do
