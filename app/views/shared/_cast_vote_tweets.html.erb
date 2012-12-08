@@ -1,7 +1,7 @@
 
 <%= form_tag(cast_vote_path, :method => :get, remote: true) do %>
 <div id="hashtags" class="twitter-hashtag-voting-block-v1">
-	<% @random_hashtag_pull.each do |hashtag| %>
+	<% @cast_vote_hashtag.each do |hashtag| %>
 	<div class="span4 twitter-spans-v1" id="<%= hashtag.id %>">
 	<div id="tweet-block-v1" class="hashtag-tweet-database-container">
 	<div class="tweet-block-border-v1">

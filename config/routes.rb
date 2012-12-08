@@ -8,8 +8,12 @@ Tweetvstweet::Application.routes.draw do
 
   root :to => "hashtags#home"
   resources :hashtags
+
   match '/vote', :to => 'hashtags#vote'
 
+  match '/cast_vote', :to => 'hashtags#cast_vote'
+
+  match '/thanks', :to => 'pages#thanks'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

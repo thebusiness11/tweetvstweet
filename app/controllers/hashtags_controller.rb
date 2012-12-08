@@ -4,9 +4,14 @@ class HashtagsController < ApplicationController
 
 	end
 
-	def vote
-		@random_hashtags = Hashtag.order("RANDOM()").limit(4)
-	end
+	def cast_vote
+ 	Hashtag.cast_vote(params[:cast_vote])
+ 		@cast_vote_hashtag = Hashtag.cast_vote_hashtag(params[:hashtag])
+ 		respond_to do |format|
+ 		format.html { redirect_to root_path }
+ 		format.js
+		end
+	end	
 
 	def show
 	
@@ -18,13 +23,14 @@ class HashtagsController < ApplicationController
 	end
 
 	def create 
- 		Hashtag.pull_hashtag(params[:hashtag])
+ 		Hashtag.create_hashtag(params[:hashtag])
 		@random_hashtag_pull = Hashtag.random_hashtags_pull
 		respond_to do |format|
-		format.html { redirect_to vote_path }
+		format.html { redirect_to root_path }
 		format.js
 	end
 	 end
+
 end
 
   # 		dash = "#"
