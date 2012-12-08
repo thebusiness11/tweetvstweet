@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206062806) do
+ActiveRecord::Schema.define(:version => 20121208082841) do
 
   create_table "hashtags", :force => true do |t|
     t.integer  "tweet_id",          :limit => 8
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(:version => 20121206062806) do
     t.integer  "view_count"
     t.integer  "wins"
   end
+
+  add_index "hashtags", ["id", "hashtag"], :name => "index_hashtags_on_id_and_hashtag"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
