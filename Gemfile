@@ -19,6 +19,7 @@ gem "oj", "~> 1.4.5"
 gem "twitter-text"
 gem "squeel", "~> 1.0.13"
 	gem 'rack-mini-profiler'
+	gem 'newrelic_rpm'
 
 
 group :development, :test do
@@ -26,7 +27,6 @@ group :development, :test do
 	gem 'rspec-rails', '2.11.0'
 	gem 'guard-rspec', '1.2.1'
 	gem 'growl', '1.0.3'
-	gem 'newrelic_rpm'
 end
 
 group :production do
