@@ -15,4 +15,5 @@
 /tmp
 
 # Ignore application configuration
+/config/application.yml
 /config/newrelic.yml/config/application.yml
