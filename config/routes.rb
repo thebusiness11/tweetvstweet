@@ -15,6 +15,8 @@ Tweetvstweet::Application.routes.draw do
 
   match '/thanks', :to => 'pages#thanks'
 
+ 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

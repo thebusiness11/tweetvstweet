@@ -20,7 +20,7 @@
 		<a class="twitter-view-details-v1" target="_blank"  href="https://twitter.com/<%= hashtag.from_user %>/statuses/<%= hashtag.tweet_id %>">
 		<span class="tweet-date-v1"><%= hashtag.created_at.strftime("%d %b %Y") %></span></a>
 		<%= hidden_field_tag :cast_vote, hashtag.id %>
-		<span class="twitter-vote-button-v1"><%= submit_tag "Vote!", class: "btn btn-mini btn-primary" %></span>
+		<span class="twitter-vote-button-v1"><%= submit_tag "Vote!", class: "btn btn-mini btn-inverse" %></span>
 
 		<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 		<ul class="twitter-intent-ul-v1">

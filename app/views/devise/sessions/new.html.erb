@@ -1,7 +1,8 @@
+<div class="users-container">  <div class="users-container-title">
 <h1>Sign in</h1>
-
+</div>
 <div class="row">
-	<div class= "span6 offset3">
+	<div class= "span6 users-container-content">
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 			<%= f.label :username %>
 		  	<%= f.text_field :username %>
@@ -17,4 +18,5 @@
 		<% end %>
 		<%= render "devise/shared/links" %>
 	</div>
+</div>
 </div>

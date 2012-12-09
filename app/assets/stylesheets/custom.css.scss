@@ -2,13 +2,14 @@ $navbarBackground: #555;
 $navbarBackgroundHighlight: #888;
 $navbarText: #eee;
 $navbarLinkColor: #eee;
-
 @import "bootstrap";
 
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
 $maincolor: white;
+
+a:hover{color: #08c !important;}
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -27,13 +28,7 @@ background: url(dark_leather.png) repeat !important;
 .navbar-inner{
   background: url(red_leather.png) repeat !important;}
 
-.tweet-url a:hover{
-color: #222 !important;
-}
 
-.tweet-url a{
-color: #222 !important;
-}
 
 .twitter-sign-in{
  width: 158px;
@@ -151,7 +146,7 @@ font-size: 14px;
 font-weight: bold;
 }
 .leaderboard-winner-title a:hover{
-color: #000 !important;
+color: #08c !important;
 text-decoration: none !important;
 }
 
@@ -167,9 +162,14 @@ margin-right: 2px;
   margin-bottom:13px;
   color: #fff;
   line-height:11px;
-  font-size:11px;
+  font-size:12px;
+  letter-spacing: 1px;
 }
+.leaderboard-winner-text a:hover{
 
+color: #f3f3f3 !important;
+text-decoration: none !important;
+}
 .vote-history-container{
 margin-top:10px
 }
@@ -299,6 +299,10 @@ color: #620909 !important;
                color: #999999 !important;
 
 }
+
+.twitter-footer-v1 :hover{
+text-decoration:none;
+}
 .twitter-view-details-v1{
   font-size: 12px;
   color: #999999;
@@ -364,6 +368,9 @@ cursor: pointer !important;
                      line-height: 21px;
 }
 
+.swag_button:hover{
+  color:#08c !important;
+}
 .input-prepend .add-on{
   height:50px;
   min-width:30px;
@@ -379,10 +386,11 @@ cursor: pointer !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
 
-
- a:hover{
-  color: #f3f3f3 !important;
+.btn-inverse{
+letter-spacing:1px;
+font-size:12px;
 }
+
 .search-form{
 
 }
@@ -390,15 +398,9 @@ cursor: pointer !important;
   margin: auto !important;
 }
 
-
 .add-on-right{
-  height:50px;
-  min-width:30px;
-  font-size:45px;
-  line-height:46px;
-  min-width:30px;
+
    background: url(red_leather.png) repeat !important;
-     background: #fff;
     background-image: linear-gradient(to bottom, #444444, #222222);
     background-repeat: repeat-x;
     border-color: #fff #fff #fff;
@@ -507,14 +509,14 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  color: #fff !important;  
   a {
-    color: $gray;
+    color: #fff;
     &:hover { 
       color: $grayDarker;
+      text-decoration: none;
     }
   }  
   small { 
@@ -671,3 +673,59 @@ aside {
 #follow_form {
   padding-top: 5px;
 }
+
+.site-stats{
+  margin-top: 45px;
+  margin-left: 12px;
+  line-height:20px;
+}
+.site-stats-text{
+  font-family: Tahoma, Geneva, sans-serif; 
+  color: #fff;
+  font-size:13px;
+}
+.site-stats-container{
+  margin: auto;
+  width: 850px
+}
+
+.ribbon {
+    background: url("forkme.png") no-repeat scroll center top transparent;
+    display: block;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: -5px;
+    width: 162px;
+}
+
+.users-container{
+      background: url("white_leather.png") repeat scroll center top transparent;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    width: 550px;
+    border: 3px solid #fff;
+  border-radius: 5px 5px 5px 5px !important;
+}
+.users-container-title
+{
+        background: url("red_leather.png") repeat scroll center top transparent;
+height:65px;
+width: 100%;
+padding-top: 1px; 
+border-bottom: 2px solid #fff;
+color: #fff !important;
+}
+
+.users-container-content{
+  padding: 10px;
+}
+
+
+
+
+
+
+
+
+

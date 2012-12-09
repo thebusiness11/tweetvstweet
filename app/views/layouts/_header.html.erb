@@ -2,7 +2,7 @@
   <div class="navbar-inner">
     <div class="container">
       <ul class= "nav">
-      <li><a href="./" class="logo" title="tweetvstweet"></a></li>
+      <li><a href="<%= root_path %>" class="logo" title="tweetvstweet"></a></li>
     </ul>
         <nav>
         <ul class="nav pull-right">
@@ -15,7 +15,7 @@
          <li><%= link_to 'Settings', edit_user_registration_path %></li>
          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
          <% else %>
-<li><a href="./users/auth/twitter" class="twitter-sign-in" title="Sign in with Twitter"></a></li>
+<li><a href="<%= root_url %>users/auth/twitter" class="twitter-sign-in" title="Sign in with Twitter"></a></li>
          <% end %>
         </ul>
       </nav>
