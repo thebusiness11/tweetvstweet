@@ -15,12 +15,35 @@ $maincolor: white;
   -webkit-box-sizing: border-box; 
   box-sizing: border-box;
 }
+body {
+background: url(dark_leather.png) repeat !important;
 
+}
+.navbar a:hover{
+  color: #f3f3f3 !important;
+}
 
+.orange{
+  background-color: #e08050 !important;
+}
+
+.navbar-inner{
+  background: url(red_leather.png) repeat !important;}
+
+.twitter-sign-in{
+ width: 158px;
+ height:28px;
+ display:block;
+margin-top: 6px;
+margin-bottom: -14px;
+ background:transparent url('sign-in-with-twitter-gray.png') center top no-repeat;
+}
 /*display tweets */
 .votes-in{
   display: visible;
-  height: 400px;
+  height: 200px;
+  width:450px;
+  margin:auto;
 }
 .twitter-hashtag-voting-block-v1{width:650px;
 min-height:500px;}
@@ -33,7 +56,6 @@ min-height:500px;}
     position: relative !important;
 }
 .twitter-spans-v1{
-  height: 175px;
 }
 
 .twitter-vote-button-v1{
@@ -46,17 +68,18 @@ padding-left: 35px;
     -moz-border-left-colors: none !important;
     -moz-border-right-colors: none !important;
     -moz-border-top-colors: none !important;
-    border-color: #EEEEEE #DDDDDD #BBBBBB !important;
+    border-color: #4f0707  #4f0707  #4f0707  !important;
     border-image: none !important;
-    border-left: 1px solid #DDDDDD !important;
-    border-right: 1px solid #DDDDDD !important;
-    border-style: solid !important;
-    border-width: 1px !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+    border-left: 2px solid #4f0707  !important;
+    border-right: 2px solid #4f0707 !important;
+    border-style: dotted !important;
+    border-width: 2px !important;
+    box-shadow: 0 1px 3px rgba(250, 250, 250, 0.35) !important;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     border-radius: 5px;
+    background: #fff !important;
 }
 
 .tweet-block-spacing-v1{
@@ -170,6 +193,8 @@ text-decoration:underline !important;
   font-size: 12px;
   color: #999999;
   float: left;
+  margin-top:6px;
+  margin-bottom: -2px;
 }
 
 .twitter-footer-date-details-v1{
@@ -205,6 +230,7 @@ cursor: pointer !important;
  width: 16px;
  height:16px;
  display:block;
+ margin-top:-2px;
  background:transparent url('favorite.png') center top no-repeat;
 }
 
@@ -213,7 +239,7 @@ cursor: pointer !important;
 }
 
 .twitter-intent-ul-v1{
-   margin: 0 0 0.5px 25px;
+   margin: 6px 0px -1px 25px;
        padding: 0;
     display: block !important;
     visibility: visible !important;
@@ -234,10 +260,40 @@ cursor: pointer !important;
   font-size:45px;
   line-height:46px;
   min-width:30px;
-     background-color: #363636;
+   background: url(red_leather.png) repeat !important;
+     background: #fff;
     background-image: linear-gradient(to bottom, #444444, #222222);
     background-repeat: repeat-x;
-    border-color: #222222 #222222 #000000;
+    border-color: #fff #fff #fff;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+
+
+ a:hover{
+  color: #f3f3f3 !important;
+}
+.search-form{
+  width:414px;
+  height:60px;
+  margin:auto;
+}
+.center-search{
+  margin: auto !important;
+}
+
+
+.add-on-right{
+  height:50px;
+  min-width:30px;
+  font-size:45px;
+  line-height:46px;
+  min-width:30px;
+   background: url(red_leather.png) repeat !important;
+     background: #fff;
+    background-image: linear-gradient(to bottom, #444444, #222222);
+    background-repeat: repeat-x;
+    border-color: #fff #fff #fff;
     color: #FFFFFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }

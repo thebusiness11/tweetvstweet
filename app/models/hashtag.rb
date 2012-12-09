@@ -20,11 +20,14 @@ class Hashtag < ActiveRecord::Base
 
   # after_find :update_view_count
 
- def self.create_hashtag(hashtag)
+
+
+
+ def self.create_hashtag_signed_in(hashtag)
   dash = "#"
   # @view_count_init = "0"
   @hashtag_scrubbed = [dash, hashtag].join
-  Twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 100, :result_type => "mixed").results.map do |tweet|
+  User.current_user.twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 100, :result_type => "mixed").results.map do |tweet|
   	unless exists?(tweet_id: tweet.id)
   		create!(
   			tweet_id: tweet.id,
@@ -36,17 +39,39 @@ class Hashtag < ActiveRecord::Base
         hashtag: @hashtag_scrubbed,
         view_count: "0",
         wins: "0"
-        )	
+          )	
   		end		
   	end
   end
 
+def self.create_hashtag_guest(hashtag)
+  dash = "#"
+  # @view_count_init = "0"
+  @hashtag_scrubbed = [dash, hashtag].join
+  Twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 100, :result_type => "mixed").results.map do |tweet|
+    unless exists?(tweet_id: tweet.id)
+      create!(
+        tweet_id: tweet.id,
+        text: tweet.text,
+        profile_image_url: tweet.user.profile_image_url,
+        from_user: tweet.from_user,
+        from_user_name: tweet.user.name, 
+        created_at: tweet.created_at,
+        hashtag: @hashtag_scrubbed,
+        view_count: "0",
+        wins: "0"
+          ) 
+      end   
+    end
+  end
+
+
 def self.random_hashtags_pull
-  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(4).each(&:update_view_count)
+  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(2).each(&:update_view_count)
 end
 
 def self.cast_vote_hashtag(hashtag)
-  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(4).each(&:update_view_count)
+  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(2).each(&:update_view_count)
 end
 
 

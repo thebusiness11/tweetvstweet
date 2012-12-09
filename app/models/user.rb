@@ -47,13 +47,15 @@ class User < ActiveRecord::Base
   		user.oauth_token	= auth.credentials.token
   		user.oauth_secret	= auth.credentials.secret
   	end
+
 	end
 
-	def twitter
-  		if provider == "twitter"
-    	@twitter ||= Twitter::Client.new(oauth_token: user.oauth_token, oauth_token_secret: user.oauth_secret)
-  	end
-	end
+def twitter
+  if provider == "twitter"
+    @twitter ||= Twitter::Client.new(oauth_token: oauth_token, oauth_token_secret: oauth_secret)
+  end
+end
+
 
 	def self.new_with_session(params, session)
 		if session["devise.user_attributes"]
@@ -77,4 +79,13 @@ class User < ActiveRecord::Base
 			super
 		end
 	end
+	class << self
+    def current_user=(user)
+      Thread.current[:current_user] = user
+    end
+
+    def current_user
+      Thread.current[:current_user]
+    end
+  end
 end

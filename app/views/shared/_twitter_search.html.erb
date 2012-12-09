@@ -1,8 +1,8 @@
-	<%= form_tag hashtags_path, remote: true do %>
+	<%= form_tag hashtags_path, class: "search-form", remote: true do %>
 				<div class="input-prepend input-append">
 				<span class="add-on swag">#</span>
 
 				<%= text_field_tag :hashtag, nil, onkeypress: "return isNumberKey(event)", class: "span4 inverse swag_text_field", id:"appendedPrependedInput" %>
 
-				<%= submit_tag "VS!", class: "btn btn-inverse swag_button" %>
-				<% end %>
+				<%= submit_tag "VS!", class: "btn add-on-right swag_button" %>
+				<% end %>`

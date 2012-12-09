@@ -23,7 +23,12 @@ class HashtagsController < ApplicationController
 	end
 
 	def create 
- 		Hashtag.create_hashtag(params[:hashtag])
+ 		if signed_in?
+ 			Hashtag.create_hashtag_signed_in(params[:hashtag])
+ 		else
+ 			Hashtag.create_hashtag_guest(params[:hashtag])
+ 		end
+ 		Hashlog.create_hashlog(params[:hashtag])
 		@random_hashtag_pull = Hashtag.random_hashtags_pull
 		respond_to do |format|
 		format.html { redirect_to root_path }

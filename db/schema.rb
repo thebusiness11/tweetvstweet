@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208082841) do
+ActiveRecord::Schema.define(:version => 20121208162445) do
+
+  create_table "hashlogs", :force => true do |t|
+    t.string   "tag"
+    t.integer  "count"
+    t.date     "latest"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "hashtags", :force => true do |t|
     t.integer  "tweet_id",          :limit => 8

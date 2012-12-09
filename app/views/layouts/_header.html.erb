@@ -3,7 +3,7 @@
     <div class="container">
       <%= link_to "tweetvstweet", root_path, id: "logo" %>
       <nav>
-        <ul class="nav">
+        <ul class="nav pull-right">
        
           <% if can? :access, :rails_admin %>
           <li><%= link_to 'Admin', rails_admin_path %></li>
@@ -13,8 +13,7 @@
          <li><%= link_to 'Settings', edit_user_registration_path %></li>
          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
          <% else %>
-         <li><%= link_to "Create Account", new_user_registration_path %></li>
-         <li><%= link_to "Login", new_user_session_path %></li>
+<li><a href="./users/auth/twitter" class="twitter-sign-in" title="Sign in with Twitter"></a></li>
          <% end %>
         </ul>
       </nav>
