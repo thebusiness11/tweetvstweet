@@ -7,7 +7,6 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
-# Power Pack
 gem "bootstrap-sass", "~> 2.1.1.0"
 gem "devise", "~> 2.1.2"
 gem "omniauth-twitter", "~> 0.0.14"
@@ -18,8 +17,8 @@ gem "twitter", "~> 4.3.0"
 gem "oj", "~> 1.4.5"
 gem "twitter-text"
 gem "squeel", "~> 1.0.13"
-	gem 'rack-mini-profiler'
-	gem 'newrelic_rpm'
+gem 'rack-mini-profiler'
+gem 'newrelic_rpm'
 
 
 group :development, :test do
