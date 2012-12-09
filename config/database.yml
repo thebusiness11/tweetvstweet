@@ -47,11 +47,9 @@ test:
   password:
 
 production:
-adapter:  postgresql
-encoding: unicode
-pool: 5
-database: dbip66b5j77o63
-username: uhktffzddheqyw
-password: _v_HpgUgO5UAV3d3mg67oWsS09
-host: ec2-54-243-249-191.compute-1.amazonaws.com
-port: 5432
+  adapter: ec2-54-243-249-191.compute-1.amazonaws.com
+  encoding: unicode
+  database: tweetvstweet_production
+  pool: 5
+  username: tweetvstweet
+  password:
