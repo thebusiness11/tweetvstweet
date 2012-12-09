@@ -21,17 +21,19 @@ class HashtagsController < ApplicationController
 
 def home	
 			@vote_history = Hashlog.vote_history
+			@leaderboard = Hashtag.leaderboard_history
 end
 	
 	def create 
 		@vote_history = Hashlog.vote_history
- 		if signed_in?
+		if signed_in?
  			Hashtag.create_hashtag_signed_in(params[:hashtag])
  		else
  			Hashtag.create_hashtag_guest(params[:hashtag])
  		end
  		Hashlog.create_hashlog(params[:hashtag])
 		@random_hashtag_pull = Hashtag.random_hashtags_pull
+		@leaderboard = Hashtag.leaderboard_history_current
 		respond_to do |format|
 		format.html { redirect_to root_path }
 		format.js

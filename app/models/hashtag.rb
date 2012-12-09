@@ -67,11 +67,15 @@ def self.create_hashtag_guest(hashtag)
 
 
 def self.random_hashtags_pull
-  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(2).each(&:update_view_count)
+  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(4).each(&:update_view_count)
+end
+
+def self.leaderboard_history_current
+  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"wins DESC"}.limit(7)
 end
 
 def self.cast_vote_hashtag(hashtag)
-  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(2).each(&:update_view_count)
+  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(4).each(&:update_view_count)
 end
 
 
@@ -83,6 +87,13 @@ end
 def self.cast_vote(cast_vote)
   Hashtag.increment_counter(:wins, cast_vote)
 end
+
+def self.leaderboard_history
+  Hashtag.order('wins DESC').limit(7)
+end
+
+
+
 
 end
 
