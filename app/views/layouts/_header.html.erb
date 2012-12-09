@@ -1,8 +1,10 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "tweetvstweet", root_path, id: "logo" %>
-      <nav>
+      <ul class= "nav">
+      <li><a href="./" class="logo" title="tweetvstweet"></a></li>
+    </ul>
+        <nav>
         <ul class="nav pull-right">
        
           <% if can? :access, :rails_admin %>

@@ -5,6 +5,7 @@ class HashtagsController < ApplicationController
 	end
 
 	def cast_vote
+	@vote_history = Hashlog.vote_history
  	Hashtag.cast_vote(params[:cast_vote])
  		@cast_vote_hashtag = Hashtag.cast_vote_hashtag(params[:hashtag])
  		respond_to do |format|
@@ -18,11 +19,12 @@ class HashtagsController < ApplicationController
 
 	end
 
-	def index
-
-	end
-
+def home	
+			@vote_history = Hashlog.vote_history
+end
+	
 	def create 
+		@vote_history = Hashlog.vote_history
  		if signed_in?
  			Hashtag.create_hashtag_signed_in(params[:hashtag])
  		else

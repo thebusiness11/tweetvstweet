@@ -1,0 +1,7 @@
+<div class="vote-history-container">
+<ul class="vote-history-ul">
+<% @vote_history.each do |hashlog| %>
+<li><span class="vote-history-span"><%= hashlog.tag %></span></li>
+<% end %>
+</ul>
+</div>
