@@ -1,9 +1,5 @@
 class HashtagsController < ApplicationController
 
- 	def home 
-
-	end
-
 	def cast_vote
 	@vote_history = Hashlog.vote_history
 	@leaderboard = Hashtag.leaderboard_history_current
@@ -23,9 +19,15 @@ class HashtagsController < ApplicationController
 def home	
 			@vote_history = Hashlog.vote_history
 			@leaderboard = Hashtag.leaderboard_history
+
 end
 	
 	def create 
+			@stats_total = Hashtag.count 
+	@stats_wins = Hashtag.sum(:wins)
+	@stats_views = Hashtag.sum(:view_count)
+
+	@stats_losers = (@stats_views - @stats_wins) 
 		@vote_history = Hashlog.vote_history
 		if signed_in?
  			Hashtag.create_hashtag_signed_in(params[:hashtag])
@@ -40,5 +42,4 @@ end
 		format.js
 	end
 	 end
-
 end

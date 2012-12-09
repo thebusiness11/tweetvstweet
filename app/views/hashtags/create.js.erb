@@ -3,3 +3,4 @@ $(".votes-in").html("<%= escape_javascript(render(:partial => 'shared/vote_tweet
 $(".tag-history").html("<%= escape_javascript(render(:partial => 'shared/tag_history', :object => @vote_history)) %>")
 $(".leaderboard-tag-history").html("<%= escape_javascript(render(:partial => 'shared/leaderboard', :object => @leaderboard)) %>")
 
+$(".footer-stats").html("<%= escape_javascript(render(:partial => 'shared/stats')) %>")
