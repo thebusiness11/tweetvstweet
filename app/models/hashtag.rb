@@ -71,7 +71,7 @@ def self.random_hashtags_pull
 end
 
 def self.leaderboard_history_current
-  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"wins DESC"}.limit(7)
+  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"wins DESC"}.limit(6)
 end
 
 def self.cast_vote_hashtag(hashtag)
@@ -89,7 +89,7 @@ def self.cast_vote(cast_vote)
 end
 
 def self.leaderboard_history
-  Hashtag.order('wins DESC').limit(7)
+  Hashtag.order('wins DESC').limit(6)
 end
 
 

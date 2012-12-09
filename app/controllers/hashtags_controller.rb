@@ -6,6 +6,7 @@ class HashtagsController < ApplicationController
 
 	def cast_vote
 	@vote_history = Hashlog.vote_history
+	@leaderboard = Hashtag.leaderboard_history_current
  	Hashtag.cast_vote(params[:cast_vote])
  		@cast_vote_hashtag = Hashtag.cast_vote_hashtag(params[:hashtag])
  		respond_to do |format|
