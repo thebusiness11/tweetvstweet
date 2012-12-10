@@ -100,7 +100,7 @@ width: 149px;
     -webkit-border-radius: 0px 0px 5px 5px;
     -khtml-border-radius: 0px 0px 5px 5px;
     border-radius: 0px 0px 5px 5px;
-  background: url(pink_leather.png) repeat !important;
+  background: url(mild_green_leather.png) repeat !important;
   width:150px;
   margin-left:30px;
   height: 500px;
@@ -117,7 +117,7 @@ width: 149px;
     -webkit-border-radius: 0px 0px 5px 5px;
     -khtml-border-radius: 0px 0px 5px 5px;
     border-radius: 0px 0px 5px 5px;
-  background: url(pink_leather.png) repeat !important;
+  background: url(mild_green_leather.png) repeat !important;
   width:225px;
   margin-left:0px;
   height: 500px;
@@ -433,7 +433,12 @@ font-size:12px;
   height:60px !important;
   font-size: 40px !important;
   line-height:45px !important;
+  color: #038dff !important;
+  font-weight: bold;
   width:372px !important;
+  border: 1px solid #fff !important;
+  background: url(white_leather.png) repeat !important;
+
 } 
 
 .swag_button{
@@ -741,7 +746,7 @@ aside {
 }
 .users-container-title
 {
-        background: url("pink_leather.png") repeat scroll center top transparent;
+        background: url("blue_leather.png") repeat scroll center top transparent;
 height:65px;
 width: 100%;
 padding-top: 1px; 
