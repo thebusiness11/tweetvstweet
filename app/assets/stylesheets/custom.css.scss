@@ -1,4 +1,5 @@
-$navbarBackground: #555;
+a{
+}$barBackground: #555;
 $navbarBackgroundHighlight: #888;
 $navbarText: #eee;
 $navbarLinkColor: #eee;
@@ -9,7 +10,7 @@ $navbarLinkColor: #eee;
 $grayMediumLight: #eaeaea;
 $maincolor: white;
 
-a:hover{color: #08c !important;}
+a:hover{color: #000 !important;}
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -17,7 +18,7 @@ a:hover{color: #08c !important;}
   box-sizing: border-box;
 }
 body {
-background: url(dark_leather.png) repeat !important;
+background: url(teal_leather.png) repeat !important;
 
 }
 
@@ -26,7 +27,7 @@ background: url(dark_leather.png) repeat !important;
 }
 
 .navbar-inner{
-  background: url(red_leather.png) repeat !important;}
+  background: url(orange_leather.png) repeat !important;}
 
 
 
@@ -99,7 +100,7 @@ width: 149px;
     -webkit-border-radius: 0px 0px 5px 5px;
     -khtml-border-radius: 0px 0px 5px 5px;
     border-radius: 0px 0px 5px 5px;
-  background: url(red_leather.png) repeat !important;
+  background: url(pink_leather.png) repeat !important;
   width:150px;
   margin-left:30px;
   height: 500px;
@@ -116,7 +117,7 @@ width: 149px;
     -webkit-border-radius: 0px 0px 5px 5px;
     -khtml-border-radius: 0px 0px 5px 5px;
     border-radius: 0px 0px 5px 5px;
-  background: url(red_leather.png) repeat !important;
+  background: url(pink_leather.png) repeat !important;
   width:225px;
   margin-left:0px;
   height: 500px;
@@ -146,7 +147,7 @@ font-size: 14px;
 font-weight: bold;
 }
 .leaderboard-winner-title a:hover{
-color: #08c !important;
+color: #000 !important;
 text-decoration: none !important;
 }
 
@@ -158,13 +159,33 @@ float: right;
 margin-right: 2px;
 
 }
-.leaderboard-winner-text{
-  margin-bottom:13px;
+
+
+
+.leaderboard-winner-text {
+  margin-bottom:16px;
   color: #fff;
   line-height:11px;
   font-size:12px;
   letter-spacing: 1px;
+  a {
+    color: #000;
+    font-weight: bold;
+     letter-spacing: -0.5px;
+      &:hover {
+
+      color: #fff;
+    }
+  }
 }
+
+
+
+
+
+
+
+
 .leaderboard-winner-text a:hover{
 
 color: #f3f3f3 !important;
@@ -377,7 +398,7 @@ cursor: pointer !important;
   font-size:45px;
   line-height:46px;
   min-width:30px;
-   background: url(red_leather.png) repeat !important;
+   background: url(blue_leather.png) repeat !important;
      background: #fff;
     background-image: linear-gradient(to bottom, #444444, #222222);
     background-repeat: repeat-x;
@@ -400,7 +421,7 @@ font-size:12px;
 
 .add-on-right{
 
-   background: url(red_leather.png) repeat !important;
+   background: url(blue_leather.png) repeat !important;
     background-image: linear-gradient(to bottom, #444444, #222222);
     background-repeat: repeat-x;
     border-color: #fff #fff #fff;
@@ -484,11 +505,11 @@ p {
 
 /* header */
 .logo {
-   background: url("logo.png") no-repeat scroll 0 0 transparent;
-    height: 30px;
+   background: url("logo_blue.png") no-repeat scroll 0 0 transparent;
+    height: 35px;
     margin-bottom: -16px;
     margin-top: 5px;
-    width: 172px;
+    width: 190px;
 }
 #logo {
   float: left;
@@ -681,7 +702,7 @@ aside {
 }
 .site-stats-text{
   font-family: Tahoma, Geneva, sans-serif; 
-  color: #fff;
+  color: #000;
   font-size:13px;
 }
 .site-stats-container{
@@ -692,6 +713,14 @@ aside {
 
 .ribbon {
     background: url("forkme.png") no-repeat scroll center top transparent;
+    display: block;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: -5px;
+    width: 162px;
+}
+.thanks {
+    background: url("thanks.png") no-repeat scroll center top transparent;
     display: block;
     height: 30px;
     margin-left: 10px;
@@ -710,7 +739,7 @@ aside {
 }
 .users-container-title
 {
-        background: url("red_leather.png") repeat scroll center top transparent;
+        background: url("pink_leather.png") repeat scroll center top transparent;
 height:65px;
 width: 100%;
 padding-top: 1px; 
