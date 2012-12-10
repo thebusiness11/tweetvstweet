@@ -1,7 +1,10 @@
 <div class="vote-history-container">
 <ul class="vote-history-ul">
 <% @vote_history.each do |hashlog| %>
-<li><span class="vote-history-span"><%= hashlog.tag %></span></li>
+
+<%= link_to hashtags_path(:hashtag => hashlog.tag), :method => :post, :class => "vote-history-span", :remote => true  do%> 
+#<%= hashlog.tag  %>
+<% end %> 
 <% end %>
 </ul>
 </div>

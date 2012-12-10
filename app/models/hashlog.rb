@@ -5,7 +5,7 @@ class Hashlog < ActiveRecord::Base
  	def self.create_hashlog(hashtag)
 		dash = "#"
 		# @view_count_init = "0"
-		@hashtag_scrubbed = [dash, hashtag].join
+		@hashtag_scrubbed = hashtag
 		create!(
 		tag: @hashtag_scrubbed,
 		count: "0"
