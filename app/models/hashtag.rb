@@ -12,6 +12,7 @@
 #  hashtag           :string(255)
 #  updated_at        :datetime         not null
 #  view_count        :integer
+#  wins              :integer
 #
 
 class Hashtag < ActiveRecord::Base
@@ -47,7 +48,7 @@ class Hashtag < ActiveRecord::Base
 def self.create_hashtag_guest(hashtag)
   dash = "#"
   # @view_count_init = "0"
-  @hashtag_scrubbed = [dash, hashtag].join
+  @hashtag_scrubbed = [dash, hashtag].join.downcase
   Twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 100, :result_type => "mixed").results.map do |tweet|
     unless exists?(tweet_id: tweet.id)
       create!(

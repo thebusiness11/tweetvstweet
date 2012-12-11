@@ -12,6 +12,7 @@
 #  hashtag           :string(255)
 #  updated_at        :datetime         not null
 #  view_count        :integer
+#  wins              :integer
 #
 
 require 'spec_helper'

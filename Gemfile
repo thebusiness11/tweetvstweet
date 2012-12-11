@@ -19,7 +19,7 @@ gem "twitter-text"
 gem "squeel", "~> 1.0.13"
 gem 'rack-mini-profiler'
 gem 'newrelic_rpm'
-
+gem "justonedb", "~> 1.1.1"
 
 group :development, :test do
 	gem 'annotate', '2.5.0'
