@@ -14,6 +14,7 @@ class Hashlog < ActiveRecord::Base
   attr_accessible :count, :latest, :tag, :created_at
 
 
+
  	def self.create_hashlog(hashtag)
 		dash = "#"
 		# @view_count_init = "0"
@@ -30,3 +31,18 @@ class Hashlog < ActiveRecord::Base
 		# Hashlog.order('created_at DESC').limit(19)
 	end
 end
+
+
+
+
+
+ 	# def self.create_hashlog(hashtag)
+		# dash = "#"
+		# # @view_count_init = "0"
+		# @hashtag_scrubbed = hashtag
+		# create!(
+		# tag: @hashtag_scrubbed,
+		# latest: Time.now.to_date,
+		# count: "0"
+		# )	
+  # 	end
