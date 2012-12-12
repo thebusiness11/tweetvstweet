@@ -148,7 +148,6 @@ text-decoration: none;
 .leaderboard-winner-title a{
 color: #fff !important;
 font-size: 14px;
-font-weight: bold;
 }
 .leaderboard-winner-title a:hover{
 color: #000 !important;
@@ -156,12 +155,21 @@ text-decoration: none !important;
 }
 
 .leaderboard-winner-title-left{
-   
+margin-top:-2px;
 }
 .leaderboard-winner-title-wins{
-float: right;
-margin-right: 2px;
-
+  background-color:#0088CC;
+  background-position:initial initial;
+  background-repeat:initial initial;
+  border:2px solid #FFFFFF;
+  border-bottom-left-radius:8px;
+  border-bottom-right-radius:8px;
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+  float:right;
+  margin-top:-5px;
+  padding:0 5px;
+  font-weight:normal !important;
 }
 
 

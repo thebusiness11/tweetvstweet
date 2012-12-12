@@ -5,7 +5,7 @@
 				<a class="twitter-block-user-v1" target="_blank" href="https://twitter.com/<%= hashtag.from_user %>">
 
 	<span class="leaderboard-winner-title-left">@<%= hashtag.from_user %></span>
-	<span class="leaderboard-winner-title-wins">wins: <%= hashtag.wins %></span></a>
+	<span class="leaderboard-winner-title-wins"><%= hashtag.wins %> wins</span></a>
 </div><div class="leaderboard-winner-text">
 	<%= sanitize(auto_link(hashtag.text).html_safe, :suppress_no_follow => true) %></div>
 </div>
