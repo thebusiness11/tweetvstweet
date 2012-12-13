@@ -19,9 +19,7 @@ class Hashtag < ActiveRecord::Base
 
   attr_accessible :text, :profile_image_url, :from_user, :created_at, :tweet_id, :hashtag, :from_user_name, :view_count, :wins
 
-  # after_find :update_view_count
-
-
+  validates_presence_of :hashtag
 
 
  def self.create_hashtag_signed_in(hashtag)
@@ -46,6 +44,7 @@ class Hashtag < ActiveRecord::Base
   end
 
 def self.create_hashtag_guest(hashtag)
+
   dash = "#"
   # @view_count_init = "0"
   @hashtag_scrubbed = [dash, hashtag].join.downcase
