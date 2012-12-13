@@ -5,6 +5,26 @@ $navbarText: #eee;
 $navbarLinkColor: #eee;
 @import "bootstrap";
 
+
+@font-face {
+  font-family: 'chalk1';
+  src: url('chalk1.eot'); /* IE9 Compat Modes */
+  src: url('chalk1.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('chalk1.woff') format('woff'), /* Modern Browsers */
+       url('chalk1.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('chalk1.svg#svgFontName') format('svg'); /* Legacy iOS */
+  }
+
+@font-face {
+  font-family: 'chalk2';
+  src: url('chalk2.eot'); /* IE9 Compat Modes */
+  src: url('chalk2.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('chalk2.woff') format('woff'), /* Modern Browsers */
+       url('chalk2.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('chalk2.svg#svgFontName') format('svg'); /* Legacy iOS */
+  }
+
+
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
@@ -128,9 +148,9 @@ text-decoration: none;
 }
 .vote-history-span{
      color: #FFFFFF;
-    font-size: 16px;
-    letter-spacing: 1px;
-    line-height: 22px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 20px;
     width: 100px;
 }
 .vote-history-title{
@@ -205,7 +225,9 @@ color: #f3f3f3 !important;
 text-decoration: none !important;
 }
 .vote-history-container{
-margin-top:10px
+margin-top:10px;
+font-family: 'chalk2', Fallback, Georiga;
+
 }
 .leaderboard-tag-history{
   padding: 5px;
