@@ -23,7 +23,14 @@ $navbarLinkColor: #eee;
        url('chalk2.ttf')  format('truetype'), /* Safari, Android, iOS */
        url('chalk2.svg#svgFontName') format('svg'); /* Legacy iOS */
   }
-
+@font-face {
+  font-family: 'CHILD';
+  src: url('CHILD.eot'); /* IE9 Compat Modes */
+  src: url('CHILD.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('CHILD.woff') format('woff'), /* Modern Browsers */
+       url('CHILD.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('CHILD.svg#svgFontName') format('svg'); /* Legacy iOS */
+  }
 
 /* mixins, variables, etc. */
 
@@ -226,7 +233,7 @@ text-decoration: none !important;
 }
 .vote-history-container{
 margin-top:10px;
-font-family: 'chalk2', Fallback, Georiga;
+font-family: 'CHILD', Fallback, Georiga;
 
 }
 .leaderboard-tag-history{

@@ -19,14 +19,11 @@ class Hashtag < ActiveRecord::Base
 
   attr_accessible :text, :profile_image_url, :from_user, :created_at, :tweet_id, :hashtag, :from_user_name, :view_count, :wins
 
-  validates_presence_of :hashtag
-
-
- def self.create_hashtag_signed_in(hashtag)
-  dash = "#"
-  # @view_count_init = "0"
-  @hashtag_scrubbed = [dash, hashtag].join
-  User.current_user.twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 20, :result_type => "mixed").results.map do |tweet|
+ 
+  def self.create_hashtag_signed_in(hashtag)            #creates new tweetvstweet for inputed hashtag with # for logged in users
+    dash = "#"
+    @hashtag_scrubbed = [dash, hashtag].join
+    User.current_user.twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 20, :result_type => "mixed").results.map do |tweet|
   	unless exists?(tweet_id: tweet.id)
   		create!(
   			tweet_id: tweet.id,
@@ -43,10 +40,8 @@ class Hashtag < ActiveRecord::Base
   	end
   end
 
-def self.create_hashtag_guest(hashtag)
-
+  def self.create_hashtag_guest(hashtag)                #creates new tweetvstweet for inputed hashtag with # for guests
   dash = "#"
-  # @view_count_init = "0"
   @hashtag_scrubbed = [dash, hashtag].join.downcase
   Twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 100, :result_type => "mixed").results.map do |tweet|
     unless exists?(tweet_id: tweet.id)
@@ -66,35 +61,30 @@ def self.create_hashtag_guest(hashtag)
   end
 
 
-def self.random_hashtags_pull
-  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(4).each(&:update_view_count)
-end
+  def self.random_hashtags_pull                         #pulls 4 random hashtags for a vote first display
+    Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(4).each(&:update_view_count)
+  end
 
-def self.leaderboard_history_current
-  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"wins DESC"}.limit(5)
-end
+  def self.cast_vote_hashtag(hashtag)                    #pulls 4 random hashtags for a vote continued votes
+    Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(4).each(&:update_view_count)
+  end
 
-def self.cast_vote_hashtag(hashtag)
-  Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"RANDOM()"}.limit(4).each(&:update_view_count)
-end
+  def self.leaderboard_history_current                  #displaying 5 highscore hashtags on the right
+    Hashtag.where{ |hashtag| hashtag.hashtag =~ @hashtag_scrubbed}.order{"wins DESC"}.limit(5)  
+  end
 
+  def update_view_count                                  #updates the number of views
+    Hashtag.increment_counter(:view_count, self.id)
+    self.view_count += 1 
+  end
 
-def update_view_count
-  Hashtag.increment_counter(:view_count, self.id)
-  self.view_count += 1 # And don't save it or you'll overwrite the "safe" value!
-end
+  def self.cast_vote(cast_vote)                           #counts number of wins
+    Hashtag.increment_counter(:wins, cast_vote)
+  end
 
-def self.cast_vote(cast_vote)
-  Hashtag.increment_counter(:wins, cast_vote)
-end
-
-def self.leaderboard_history
-  Hashtag.order('wins DESC').limit(5)
-end
-
-
-
-
+  def self.leaderboard_history                            #right side leaderboard history
+    Hashtag.order('wins DESC').limit(5)
+  end
 end
 
 

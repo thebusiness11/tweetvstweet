@@ -14,10 +14,7 @@ class Hashlog < ActiveRecord::Base
   attr_accessible :count, :latest, :tag, :created_at
 
 
-
- 	def self.create_hashlog(hashtag)
-		dash = "#"
-		# @view_count_init = "0"
+ 	def self.create_hashlog(hashtag)		#enters hashtag into the log table, without #. 
 		@hashtag_scrubbed = hashtag
 		create!(
 		tag: @hashtag_scrubbed,
@@ -26,23 +23,8 @@ class Hashlog < ActiveRecord::Base
 		)	
   	end
 
-	def self.vote_history
+	def self.vote_history					#displays the latest searches on the left
 		Hashlog.select("tag, min(created_at) as earliest").group("tag").order("earliest DESC").limit(19)
 		# Hashlog.order('created_at DESC').limit(19)
 	end
 end
-
-
-
-
-
- 	# def self.create_hashlog(hashtag)
-		# dash = "#"
-		# # @view_count_init = "0"
-		# @hashtag_scrubbed = hashtag
-		# create!(
-		# tag: @hashtag_scrubbed,
-		# latest: Time.now.to_date,
-		# count: "0"
-		# )	
-  # 	end

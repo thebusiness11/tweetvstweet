@@ -198,8 +198,8 @@ wins              :integer</pre>
 
           
           <div class="method-source-code" id="cast_vote-source">
-            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 88</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cast_vote</span>(<span class="ruby-identifier">cast_vote</span>)
+            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cast_vote</span>(<span class="ruby-identifier">cast_vote</span>)                           <span class="ruby-comment">#counts number of wins</span>
   <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">increment_counter</span>(<span class="ruby-value">:wins</span>, <span class="ruby-identifier">cast_vote</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- cast_vote-source -->
@@ -228,8 +228,8 @@ wins              :integer</pre>
 
           
           <div class="method-source-code" id="cast_vote_hashtag-source">
-            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cast_vote_hashtag</span>(<span class="ruby-identifier">hashtag</span>)
+            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cast_vote_hashtag</span>(<span class="ruby-identifier">hashtag</span>)                    <span class="ruby-comment">#pulls 4 random hashtags for a vote continued votes</span>
   <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">where</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">hashtag</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hashtag</span>.<span class="ruby-identifier">hashtag</span> <span class="ruby-operator">=~</span> <span class="ruby-ivar">@hashtag_scrubbed</span>}.<span class="ruby-identifier">order</span>{<span class="ruby-string">&quot;RANDOM()&quot;</span>}.<span class="ruby-identifier">limit</span>(<span class="ruby-value">4</span>).<span class="ruby-identifier">each</span>(&amp;<span class="ruby-value">:update_view_count</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- cast_vote_hashtag-source -->
@@ -258,27 +258,26 @@ wins              :integer</pre>
 
           
           <div class="method-source-code" id="create_hashtag_guest-source">
-            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create_hashtag_guest</span>(<span class="ruby-identifier">hashtag</span>)
-  <span class="ruby-identifier">dash</span> = <span class="ruby-node">&quot;#&quot;</span>
-  <span class="ruby-comment"># @view_count_init = &quot;0&quot;</span>
-  <span class="ruby-ivar">@hashtag_scrubbed</span> = [<span class="ruby-identifier">dash</span>, <span class="ruby-identifier">hashtag</span>].<span class="ruby-identifier">join</span>.<span class="ruby-identifier">downcase</span>
-  <span class="ruby-constant">Twitter</span>.<span class="ruby-identifier">search</span>(<span class="ruby-node">&quot;%#{@hashtag_scrubbed}&quot;</span>, <span class="ruby-value">:lang</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;en&quot;</span>, <span class="ruby-value">:count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>, <span class="ruby-value">:result_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;mixed&quot;</span>).<span class="ruby-identifier">results</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">tweet_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">id</span>)
-      <span class="ruby-identifier">create!</span>(
-        <span class="ruby-identifier">tweet_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">id</span>,
-        <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">text</span>,
-        <span class="ruby-identifier">profile_image_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">profile_image_url</span>,
-        <span class="ruby-identifier">from_user</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">from_user</span>,
-        <span class="ruby-identifier">from_user_name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">name</span>, 
-        <span class="ruby-identifier">created_at</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">created_at</span>,
-        <span class="ruby-identifier">hashtag</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@hashtag_scrubbed</span>,
-        <span class="ruby-identifier">view_count</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;0&quot;</span>,
-        <span class="ruby-identifier">wins</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;0&quot;</span>
-          ) 
-      <span class="ruby-keyword">end</span>   
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span></pre>
+            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create_hashtag_guest</span>(<span class="ruby-identifier">hashtag</span>)                <span class="ruby-comment">#creates new tweetvstweet for inputed hashtag with # for guests</span>
+<span class="ruby-identifier">dash</span> = <span class="ruby-node">&quot;#&quot;</span>
+<span class="ruby-ivar">@hashtag_scrubbed</span> = [<span class="ruby-identifier">dash</span>, <span class="ruby-identifier">hashtag</span>].<span class="ruby-identifier">join</span>.<span class="ruby-identifier">downcase</span>
+<span class="ruby-constant">Twitter</span>.<span class="ruby-identifier">search</span>(<span class="ruby-node">&quot;%#{@hashtag_scrubbed}&quot;</span>, <span class="ruby-value">:lang</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;en&quot;</span>, <span class="ruby-value">:count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>, <span class="ruby-value">:result_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;mixed&quot;</span>).<span class="ruby-identifier">results</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">tweet_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">id</span>)
+    <span class="ruby-identifier">create!</span>(
+      <span class="ruby-identifier">tweet_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">id</span>,
+      <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">text</span>,
+      <span class="ruby-identifier">profile_image_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">profile_image_url</span>,
+      <span class="ruby-identifier">from_user</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">from_user</span>,
+      <span class="ruby-identifier">from_user_name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">name</span>, 
+      <span class="ruby-identifier">created_at</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">created_at</span>,
+      <span class="ruby-identifier">hashtag</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@hashtag_scrubbed</span>,
+      <span class="ruby-identifier">view_count</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;0&quot;</span>,
+      <span class="ruby-identifier">wins</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;0&quot;</span>
+        ) 
+    <span class="ruby-keyword">end</span>   
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
           </div><!-- create_hashtag_guest-source -->
           
         </div>
@@ -300,33 +299,31 @@ wins              :integer</pre>
 
         <div class="method-description">
           
-          <p>after_find :<a
-href="Hashtag.html#method-i-update_view_count">#update_view_count</a></p>
+          
           
 
           
           <div class="method-source-code" id="create_hashtag_signed_in-source">
-            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create_hashtag_signed_in</span>(<span class="ruby-identifier">hashtag</span>)
- <span class="ruby-identifier">dash</span> = <span class="ruby-node">&quot;#&quot;</span>
- <span class="ruby-comment"># @view_count_init = &quot;0&quot;</span>
- <span class="ruby-ivar">@hashtag_scrubbed</span> = [<span class="ruby-identifier">dash</span>, <span class="ruby-identifier">hashtag</span>].<span class="ruby-identifier">join</span>
- <span class="ruby-constant">User</span>.<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">twitter</span>.<span class="ruby-identifier">search</span>(<span class="ruby-node">&quot;%#{@hashtag_scrubbed}&quot;</span>, <span class="ruby-value">:lang</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;en&quot;</span>, <span class="ruby-value">:count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">20</span>, <span class="ruby-value">:result_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;mixed&quot;</span>).<span class="ruby-identifier">results</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span>
-       <span class="ruby-keyword">unless</span> <span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">tweet_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">id</span>)
-               <span class="ruby-identifier">create!</span>(
-                       <span class="ruby-identifier">tweet_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">id</span>,
-                       <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">text</span>,
-                       <span class="ruby-identifier">profile_image_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">profile_image_url</span>,
-                       <span class="ruby-identifier">from_user</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">from_user</span>,
-       <span class="ruby-identifier">from_user_name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">name</span>, 
-                       <span class="ruby-identifier">created_at</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">created_at</span>,
-       <span class="ruby-identifier">hashtag</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@hashtag_scrubbed</span>,
-       <span class="ruby-identifier">view_count</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;0&quot;</span>,
-       <span class="ruby-identifier">wins</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;0&quot;</span>
-         )     
-               <span class="ruby-keyword">end</span>         
-       <span class="ruby-keyword">end</span>
- <span class="ruby-keyword">end</span></pre>
+            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create_hashtag_signed_in</span>(<span class="ruby-identifier">hashtag</span>)            <span class="ruby-comment">#creates new tweetvstweet for inputed hashtag with # for logged in users</span>
+  <span class="ruby-identifier">dash</span> = <span class="ruby-node">&quot;#&quot;</span>
+  <span class="ruby-ivar">@hashtag_scrubbed</span> = [<span class="ruby-identifier">dash</span>, <span class="ruby-identifier">hashtag</span>].<span class="ruby-identifier">join</span>
+  <span class="ruby-constant">User</span>.<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">twitter</span>.<span class="ruby-identifier">search</span>(<span class="ruby-node">&quot;%#{@hashtag_scrubbed}&quot;</span>, <span class="ruby-value">:lang</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;en&quot;</span>, <span class="ruby-value">:count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">20</span>, <span class="ruby-value">:result_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;mixed&quot;</span>).<span class="ruby-identifier">results</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">tweet_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">id</span>)
+              <span class="ruby-identifier">create!</span>(
+                      <span class="ruby-identifier">tweet_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">id</span>,
+                      <span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">text</span>,
+                      <span class="ruby-identifier">profile_image_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">profile_image_url</span>,
+                      <span class="ruby-identifier">from_user</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">from_user</span>,
+      <span class="ruby-identifier">from_user_name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">name</span>, 
+                      <span class="ruby-identifier">created_at</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">created_at</span>,
+      <span class="ruby-identifier">hashtag</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@hashtag_scrubbed</span>,
+      <span class="ruby-identifier">view_count</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;0&quot;</span>,
+      <span class="ruby-identifier">wins</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;0&quot;</span>
+        )     
+              <span class="ruby-keyword">end</span>         
+      <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
           </div><!-- create_hashtag_signed_in-source -->
           
         </div>
@@ -353,8 +350,8 @@ href="Hashtag.html#method-i-update_view_count">#update_view_count</a></p>
 
           
           <div class="method-source-code" id="leaderboard_history-source">
-            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 92</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">leaderboard_history</span>
+            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">leaderboard_history</span>                            <span class="ruby-comment">#right side leaderboard history</span>
   <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">'wins DESC'</span>).<span class="ruby-identifier">limit</span>(<span class="ruby-value">5</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- leaderboard_history-source -->
@@ -383,9 +380,9 @@ href="Hashtag.html#method-i-update_view_count">#update_view_count</a></p>
 
           
           <div class="method-source-code" id="leaderboard_history_current-source">
-            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 74</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">leaderboard_history_current</span>
-  <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">where</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">hashtag</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hashtag</span>.<span class="ruby-identifier">hashtag</span> <span class="ruby-operator">=~</span> <span class="ruby-ivar">@hashtag_scrubbed</span>}.<span class="ruby-identifier">order</span>{<span class="ruby-string">&quot;wins DESC&quot;</span>}.<span class="ruby-identifier">limit</span>(<span class="ruby-value">5</span>)
+            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">leaderboard_history_current</span>                  <span class="ruby-comment">#displaying 5 highscore hashtags on the right</span>
+  <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">where</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">hashtag</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hashtag</span>.<span class="ruby-identifier">hashtag</span> <span class="ruby-operator">=~</span> <span class="ruby-ivar">@hashtag_scrubbed</span>}.<span class="ruby-identifier">order</span>{<span class="ruby-string">&quot;wins DESC&quot;</span>}.<span class="ruby-identifier">limit</span>(<span class="ruby-value">5</span>)  
 <span class="ruby-keyword">end</span></pre>
           </div><!-- leaderboard_history_current-source -->
           
@@ -413,8 +410,8 @@ href="Hashtag.html#method-i-update_view_count">#update_view_count</a></p>
 
           
           <div class="method-source-code" id="random_hashtags_pull-source">
-            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 70</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">random_hashtags_pull</span>
+            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">random_hashtags_pull</span>                         <span class="ruby-comment">#pulls 4 random hashtags for a vote first display</span>
   <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">where</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">hashtag</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hashtag</span>.<span class="ruby-identifier">hashtag</span> <span class="ruby-operator">=~</span> <span class="ruby-ivar">@hashtag_scrubbed</span>}.<span class="ruby-identifier">order</span>{<span class="ruby-string">&quot;RANDOM()&quot;</span>}.<span class="ruby-identifier">limit</span>(<span class="ruby-value">4</span>).<span class="ruby-identifier">each</span>(&amp;<span class="ruby-value">:update_view_count</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- random_hashtags_pull-source -->
@@ -449,10 +446,10 @@ href="Hashtag.html#method-i-update_view_count">#update_view_count</a></p>
 
           
           <div class="method-source-code" id="update_view_count-source">
-            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 83</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_view_count</span>
+            <pre><span class="ruby-comment"># File app/models/hashtag.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_view_count</span>                                  <span class="ruby-comment">#updates the number of views</span>
   <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">increment_counter</span>(<span class="ruby-value">:view_count</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">view_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-comment"># And don't save it or you'll overwrite the &quot;safe&quot; value!</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">view_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- update_view_count-source -->
           

@@ -76,8 +76,6 @@
     
     <li><a href="#method-i-home">#home</a>
     
-    <li><a href="#method-i-show">#show</a>
-    
   </ul>
 </nav>
 
@@ -175,10 +173,10 @@
           
           <div class="method-source-code" id="cast_vote-source">
             <pre><span class="ruby-comment"># File app/controllers/hashtags_controller.rb, line 3</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">cast_vote</span>
-<span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">cast_vote</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:cast_vote</span>])
-<span class="ruby-ivar">@vote_history</span> = <span class="ruby-constant">Hashlog</span>.<span class="ruby-identifier">vote_history</span>
-<span class="ruby-ivar">@leaderboard</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">leaderboard_history_current</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cast_vote</span>                                                                                          <span class="ruby-comment">#Voting in the middle of the page</span>
+<span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">cast_vote</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:cast_vote</span>])                                 <span class="ruby-comment">#Tells which hashtag to vote for</span>
+<span class="ruby-ivar">@vote_history</span> = <span class="ruby-constant">Hashlog</span>.<span class="ruby-identifier">vote_history</span>                                   <span class="ruby-comment">#updates the vote history on the bottom of the page</span>
+<span class="ruby-ivar">@leaderboard</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">leaderboard_history_current</span>             <span class="ruby-comment">#updates the leaderboard on the right</span>
         <span class="ruby-ivar">@cast_vote_hashtag</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">cast_vote_hashtag</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:hashtag</span>])
         <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span> }
@@ -211,13 +209,12 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/hashtags_controller.rb, line 25</span>
+            <pre><span class="ruby-comment"># File app/controllers/hashtags_controller.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span> 
-                <span class="ruby-ivar">@stats_total</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">count</span> 
-<span class="ruby-ivar">@stats_wins</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-value">:wins</span>)
-<span class="ruby-ivar">@stats_views</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-value">:view_count</span>)
-
-<span class="ruby-ivar">@stats_losers</span> = (<span class="ruby-ivar">@stats_views</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@stats_wins</span>) 
+        <span class="ruby-ivar">@stats_total</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">count</span> 
+        <span class="ruby-ivar">@stats_wins</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-value">:wins</span>)
+        <span class="ruby-ivar">@stats_views</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-value">:view_count</span>)
+        <span class="ruby-ivar">@stats_losers</span> = (<span class="ruby-ivar">@stats_views</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@stats_wins</span>) 
         <span class="ruby-ivar">@vote_history</span> = <span class="ruby-constant">Hashlog</span>.<span class="ruby-identifier">vote_history</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">signed_in?</span>
                 <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">create_hashtag_signed_in</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:hashtag</span>])
@@ -228,10 +225,10 @@
         <span class="ruby-ivar">@random_hashtag_pull</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">random_hashtags_pull</span>
         <span class="ruby-ivar">@leaderboard</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">leaderboard_history_current</span>
         <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span> }
-        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span>
-<span class="ruby-keyword">end</span>
- <span class="ruby-keyword">end</span></pre>
+                <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span> }
+                <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
           </div><!-- create-source -->
           
         </div>
@@ -258,11 +255,10 @@
 
           
           <div class="method-source-code" id="home-source">
-            <pre><span class="ruby-comment"># File app/controllers/hashtags_controller.rb, line 19</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">home</span>        
-                        <span class="ruby-ivar">@vote_history</span> = <span class="ruby-constant">Hashlog</span>.<span class="ruby-identifier">vote_history</span>
-                        <span class="ruby-ivar">@leaderboard</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">leaderboard_history</span>
-
+            <pre><span class="ruby-comment"># File app/controllers/hashtags_controller.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">home</span>       
+        <span class="ruby-ivar">@vote_history</span> = <span class="ruby-constant">Hashlog</span>.<span class="ruby-identifier">vote_history</span>
+        <span class="ruby-ivar">@leaderboard</span> = <span class="ruby-constant">Hashtag</span>.<span class="ruby-identifier">leaderboard_history</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- home-source -->
           
@@ -272,37 +268,6 @@
 
         
       </div><!-- home-method -->
-
-    
-      <div id="method-i-show" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">show</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/hashtags_controller.rb, line 14</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
-
-
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- show-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- show-method -->
 
     
     </section><!-- public-instance-method-details -->

@@ -181,10 +181,8 @@ updated_at :datetime         not null</pre>
 
           
           <div class="method-source-code" id="create_hashlog-source">
-            <pre><span class="ruby-comment"># File app/models/hashlog.rb, line 18</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create_hashlog</span>(<span class="ruby-identifier">hashtag</span>)
-        <span class="ruby-identifier">dash</span> = <span class="ruby-node">&quot;#&quot;</span>
-        <span class="ruby-comment"># @view_count_init = &quot;0&quot;</span>
+            <pre><span class="ruby-comment"># File app/models/hashlog.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create_hashlog</span>(<span class="ruby-identifier">hashtag</span>)              <span class="ruby-comment">#enters hashtag into the log table, without #. </span>
         <span class="ruby-ivar">@hashtag_scrubbed</span> = <span class="ruby-identifier">hashtag</span>
         <span class="ruby-identifier">create!</span>(
         <span class="ruby-identifier">tag</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@hashtag_scrubbed</span>,
@@ -218,8 +216,8 @@ updated_at :datetime         not null</pre>
 
           
           <div class="method-source-code" id="vote_history-source">
-            <pre><span class="ruby-comment"># File app/models/hashlog.rb, line 29</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">vote_history</span>
+            <pre><span class="ruby-comment"># File app/models/hashlog.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">vote_history</span>                                  <span class="ruby-comment">#displays the latest searches on the left</span>
         <span class="ruby-constant">Hashlog</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;tag, min(created_at) as earliest&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;tag&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;earliest DESC&quot;</span>).<span class="ruby-identifier">limit</span>(<span class="ruby-value">19</span>)
         <span class="ruby-comment"># Hashlog.order('created_at DESC').limit(19)</span>
 <span class="ruby-keyword">end</span></pre>
