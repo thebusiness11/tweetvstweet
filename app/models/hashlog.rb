@@ -13,7 +13,7 @@
 class Hashlog < ActiveRecord::Base
   attr_accessible :count, :latest, :tag, :created_at
 
-#save
+
  	def self.create_hashlog(hashtag)		#enters hashtag into the log table, without #. 
 		@hashtag_scrubbed = hashtag.downcase
 		# Hashlog.find_or_create_by_tag(@hashtag_scrubbed) 

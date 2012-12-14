@@ -16,6 +16,8 @@ class HashtagsController < ApplicationController
 	def home	
 		@vote_history = Hashlog.vote_history
 		@leaderboard = Hashtag.leaderboard_history
+		# @trends_pull = Trend.trends_pull
+		@trends_display = Trend.trends_display
 	end
 	
 	def create 
@@ -34,7 +36,7 @@ class HashtagsController < ApplicationController
 		@leaderboard = Hashtag.leaderboard_history_current
 		respond_to do |format|
 			format.html { redirect_to root_path }
-			format.js
+			format.js 
 		end
 	end
 end

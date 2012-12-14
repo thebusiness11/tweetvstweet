@@ -1,0 +1,10 @@
+<div class="trends-container">
+<ul class="trends-ul">
+<% @trends_display.each do |hashlog| %>
+
+<%= link_to hashtags_path(:hashtag => hashlog.tag), :method => :post, :class => "trends-span", :remote => true  do%> 
+#<%= hashlog.tag  %>
+<% end %> 
+<% end %>
+</ul>
+</div>

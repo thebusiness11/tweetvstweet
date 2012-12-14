@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208162445) do
+ActiveRecord::Schema.define(:version => 20121214043810) do
 
   create_table "hashlogs", :force => true do |t|
     t.string   "tag"
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(:version => 20121208162445) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "trends", :force => true do |t|
+    t.string   "name"
+    t.text     "query"
+    t.text     "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

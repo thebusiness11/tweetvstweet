@@ -2,5 +2,5 @@
 $(".votes-in").html("<%= escape_javascript(render(:partial => 'shared/vote_tweets', :object => @random_hashtags)) %>")
 $(".tag-history").html("<%= escape_javascript(render(:partial => 'shared/tag_history', :object => @vote_history)) %>")
 $(".leaderboard-tag-history").html("<%= escape_javascript(render(:partial => 'shared/leaderboard', :object => @leaderboard)) %>")
-
+$(".swag_text_field").val("<%= params[:hashtag] %>");
 $(".footer-stats").html("<%= escape_javascript(render(:partial => 'shared/stats')) %>")
