@@ -54,7 +54,7 @@ background: url(teal_leather.png) repeat !important;
 }
 
 .navbar-inner{
-  background: url(dark_green_leather.png) repeat !important;}
+  background: url(orange_leather.png) repeat !important;}
 
 
 
@@ -155,9 +155,9 @@ text-decoration: none;
 }
 .vote-history-span{
      color: #FFFFFF;
-    font-size: 18px;
-    letter-spacing: 2px;
-    line-height: 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 16x;
     width: 100px;
 }
 .vote-history-title{
@@ -219,13 +219,6 @@ line-height: 12px;
   }
 }
 
-
-
-
-
-
-
-
 .leaderboard-winner-text a:hover{
 
 color: #f3f3f3 !important;
@@ -233,7 +226,6 @@ text-decoration: none !important;
 }
 .vote-history-container{
 margin-top:10px;
-font-family: 'CHILD', Fallback, Georiga;
 
 }
 .leaderboard-tag-history{
@@ -432,7 +424,6 @@ cursor: pointer !important;
 }
 
 .swag_button:hover{
-  color:#08c !important;
 }
 .input-prepend .add-on{
   height:50px;

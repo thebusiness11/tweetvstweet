@@ -23,7 +23,7 @@ class Hashtag < ActiveRecord::Base
   def self.create_hashtag_signed_in(hashtag)            #creates new tweetvstweet for inputed hashtag with # for logged in users
     dash = "#"
     @hashtag_scrubbed = [dash, hashtag].join
-    User.current_user.twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 20, :result_type => "mixed").results.map do |tweet|
+    User.current_user.twitter.search("%#{@hashtag_scrubbed}", :lang => "en", :count => 100, :result_type => "mixed").results.map do |tweet|
   	unless exists?(tweet_id: tweet.id)
   		create!(
   			tweet_id: tweet.id,
