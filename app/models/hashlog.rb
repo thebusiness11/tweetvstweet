@@ -28,6 +28,6 @@ class Hashlog < ActiveRecord::Base
 
 	def self.vote_history					#displays the latest searches on the left
 		# Hashlog.select("tag, min(created_at) as earliest").group("tag").order("earliest DESC").limit(19)
-		Hashlog.order('updated_at DESC').limit(19)
+		Hashlog.order('updated_at DESC').limit(22)
 	end
 end
