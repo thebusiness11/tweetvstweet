@@ -18,8 +18,15 @@
 class Hashtag < ActiveRecord::Base
 
   attr_accessible :text, :profile_image_url, :from_user, :created_at, :tweet_id, :hashtag, :from_user_name, :view_count, :wins
-
+  
+  hashtag_regex = /[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)*$/i 
  
+  validates :hashtag,  :presence => true,
+                    :length   => { :within => 3..20 },
+                    :format   => { :with => hashtag_regex }
+  
+
+
   def self.create_hashtag_signed_in(hashtag)            #creates new tweetvstweet for inputed hashtag with # for logged in users
     dash = "#"
     @hashtag_scrubbed = [dash, hashtag].join
@@ -30,8 +37,8 @@ class Hashtag < ActiveRecord::Base
   			text: tweet.text,
   			profile_image_url: tweet.user.profile_image_url,
   			from_user: tweet.from_user,
-        from_user_name: tweet.user.name, 
-  			created_at: tweet.created_at,
+        from_user_name: tweet.user.name,
+   			created_at: tweet.created_at,
         hashtag: @hashtag_scrubbed,
         view_count: "0",
         wins: "0"
