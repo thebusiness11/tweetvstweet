@@ -36,7 +36,7 @@ class HashtagsController < ApplicationController
 		@leaderboard = Hashtag.leaderboard_history_current
 		respond_to do |format|
 			format.html { redirect_to root_path }
-			format.js 
+			format.js { render :flash=>'alert("Cant have a blank tweet bro");' }
 		end
 	end
 end
