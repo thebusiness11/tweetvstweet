@@ -8,7 +8,7 @@ Tweetvstweet::Application.routes.draw do
 
   root :to => "hashtags#home"
   resources :hashtags
-
+  resources :autocomplete
   match '/vote', :to => 'hashtags#vote'
 
   match '/cast_vote', :to => 'hashtags#cast_vote'
