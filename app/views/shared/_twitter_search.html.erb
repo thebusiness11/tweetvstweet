@@ -2,7 +2,7 @@
 				<div class="input-prepend input-append">
 				<span class="add-on swag">#</span>
 
-				<%= text_field_tag :hashtag, nil, class: "span4 swag_text_field", id:"appendedPrependedInput" %>
+				<%= text_field_tag :hashtag, nil, class: "span4 swag_text_field", id:"appendedPrependedInput", data: {autocomplete_source: autocomplete_index_path} %>
 
 				<%= submit_tag "VS!", class: "btn add-on-right swag_button" %>
 				<% end %>
