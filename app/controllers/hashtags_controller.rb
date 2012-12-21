@@ -11,8 +11,8 @@ class HashtagsController < ApplicationController
 
 
 	def create 
-		@hash_create = Hashtag.create_hashtag(params[:hashtag][:hashtag])
-		Hashlog.create_hashlog(params[:hashtag][:hashtag])
+		@hash_create = Hashtag.create_hashtag(params[:hashtag])
+		Hashlog.create_hashlog(params[:hashtag])
 		@random_hashtag_pull = Hashtag.random_hashtags_pull
 		@leaderboard = Hashtag.leaderboard_history_current
 		respond_to do |format|

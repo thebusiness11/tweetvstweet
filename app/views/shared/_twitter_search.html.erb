@@ -1,12 +1,8 @@
-
-<%= form_for(@hash_create, :as => :create, :url => hashtags_path,  remote: true)  do |f| %>
-
+	<%= form_tag hashtags_path, class: "search-form", remote: true do %>
 				<div class="input-prepend input-append">
 				<span class="add-on swag">#</span>
-				<%= f.text_field :hashtag ,class: "span4 swag_text_field", onkeypress: "return isNumberKey(event)", id:"appendedPrependedInput", data: {autocomplete_source: autocomplete_index_path} %>
 
-				<%= f.submit "VS!", class: "btn add-on-right swag_button" %>
+				<%= text_field_tag :hashtag, nil, class: "span4 swag_text_field", id:"appendedPrependedInput", data: {autocomplete_source: autocomplete_index_path} %>
+
+				<%= submit_tag "VS!", class: "btn add-on-right swag_button" %>
 				<% end %>
-
-
-				<!-- onkeypress: "return isNumberKey(event)",  -->
