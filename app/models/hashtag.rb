@@ -19,11 +19,9 @@ class Hashtag < ActiveRecord::Base
 
   attr_accessible :text, :profile_image_url, :from_user, :created_at, :tweet_id, :hashtag, :from_user_name, :view_count, :wins
   
-  hashtag_regex = /[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)*$/i 
+  hashtag_regex = /^[A-Za-z\d=#...-]+$/i
  
-  validates :hashtag,  :presence => true,
-                    :length   => { :within => 3..20 },
-                    :format   => { :with => hashtag_regex }
+  validates :hashtag, :format => { :with => hashtag_regex }, :length => { :within => 2..20 }                    
   
 
  class << self

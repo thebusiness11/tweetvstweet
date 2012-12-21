@@ -12,7 +12,9 @@
 
 class Hashlog < ActiveRecord::Base
   attr_accessible :count, :latest, :tag, :created_at
-
+	hashtag_regex = /^[A-Za-z\d=#...-]+$/i
+ 
+  validates :tag, :format => { :with => hashtag_regex }, :length => { :within => 2..20 }
 
  	def self.create_hashlog(hashtag)		#enters hashtag into the log table, without #. 
 		@hashtag_scrubbed = hashtag.downcase

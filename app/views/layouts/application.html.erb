@@ -15,6 +15,7 @@
 			<div class="container">
         <div class="errors">
           <%= render 'shared/errors' %>
+          <%= yield(:hashtag_validators) %>
         </div>
 			<%= yield %>
 			<%= render 'layouts/footer' %>

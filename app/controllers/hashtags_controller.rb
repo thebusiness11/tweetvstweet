@@ -5,11 +5,14 @@ class HashtagsController < ApplicationController
 	def home	
 		@leaderboard = Hashtag.leaderboard_history
 		@trends_display = Trend.trends_display
+		@hash_create = Hashtag.new
+		
 	end
 
+
 	def create 
-		@hash_create = Hashtag.create_hashtag(params[:hashtag])
-		Hashlog.create_hashlog(params[:hashtag])
+		@hash_create = Hashtag.create_hashtag(params[:hashtag][:hashtag])
+		Hashlog.create_hashlog(params[:hashtag][:hashtag])
 		@random_hashtag_pull = Hashtag.random_hashtags_pull
 		@leaderboard = Hashtag.leaderboard_history_current
 		respond_to do |format|
